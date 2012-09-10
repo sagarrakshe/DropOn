@@ -27,14 +27,16 @@ def internet_on():
 def distinguish(filePath):
     File=open(filePath,"r")
     content=File.read()
-    if "@" in content and ".com" in content:
+    if content.find('@')>=0 and content.find('.com')>=0:
         #print 'This is an email id'
         #print 'email will be sent to this id via ur gmail'
         return "emailid"
-    elif "youtube" in content:
+    elif content.find('youtube')>=0:
         return "youtube"
     elif any(ext in filePath for ext in Images):
         return "image"
+    elif any(ext in filePath for ext in Videos):
+        return "video"
     else:
         return "regular"
 
@@ -46,9 +48,9 @@ class EventHandler(pyinotify.ProcessEvent):
             print "Hidden file: %s" ,event.pathname
         else:
             #notify(event.pathname.split("/").pop())
-            print distinguish(event.pathname)
-            print choose.choose()
-            os.remove(event.pathnam)
+            filetype=distinguish(event.pathname)
+            print choose.choose(filetype)
+            os.remove(event.pathname)
         #print internet_on()
         
     def process_IN_DELETE(self, event):
