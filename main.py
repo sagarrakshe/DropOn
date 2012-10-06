@@ -1,13 +1,11 @@
-# Notifier example from tutorial
-#
-# See: http://github.com/seb-m/pyinotify/wiki/Tutorial
-#
-import pyinotify
-import urllib2
+#! /usr/bin/python
+
 from notify import *
 from Tkinter import *
-import Image,ImageTk
+import pyinotify
+import urllib2
 import choose
+import social
 import os
 
 wm = pyinotify.WatchManager() # Watch Manager
@@ -17,16 +15,11 @@ Images=['.jpg','.gif','.jpeg','.png']
 Videos=['.flv','.mp4','.mkv']
 choices=list()
 
-def internet_on():
-    try:
-        response=urllib2.urlopen('http://74.125.113.99',timeout=1)
-        return True
-    except urllib2.URLError as err: pass
-    return False
-
 def distinguish(filePath):
     File=open(filePath,"r")
     content=File.read()
+    filePath=filePath.split('/').pop()
+    #print filePath
     if content.find('@')>=0 and content.find('.com')>=0:
         #print 'This is an email id'
         #print 'email will be sent to this id via ur gmail'
@@ -37,6 +30,8 @@ def distinguish(filePath):
         return "image"
     elif any(ext in filePath for ext in Videos):
         return "video"
+    elif filePath.count('.pdf'):
+        print "This is a pdf file and being removed"
     else:
         return "regular"
 
@@ -49,7 +44,7 @@ class EventHandler(pyinotify.ProcessEvent):
         else:
             #notify(event.pathname.split("/").pop())
             filetype=distinguish(event.pathname)
-            print choose.choose(filetype)
+            social.update(choose.choose(filetype), filetype, event.pathname)
             os.remove(event.pathname)
         #print internet_on()
         

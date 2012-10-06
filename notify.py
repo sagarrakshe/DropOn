@@ -5,7 +5,6 @@ try:
 except:
     print "Error: need python-notify, python-gtk2 and gtk"
 
-
 def notify(fileName):
     if not pynotify.init("Timekpr notification"):
         sys.exit(1)

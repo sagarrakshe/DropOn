@@ -5,4 +5,3 @@ def internet_on():
         return True
     except urllib2.URLError as err: pass
     return False
-#print internet_on()

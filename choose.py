@@ -17,7 +17,8 @@ def display():
     return choices
 
 def facebook():
-    print "Facebook"
+    fb = Tk()
+    fb.mainloop()
     return
 
 def twitter():
@@ -49,7 +50,7 @@ def choose(app):
     position=str(width/7)+'x'+str(int(height/2.2))+'+'+str(int(width/2.5))+'+'+str((height/3))
     root.geometry(position)
 
-    fb_check = Checkbutton(root,command=(lambda: append("Facebook")), state=fb_state)
+    fb_check = Checkbutton(root,command=(lambda: append("facebook")), state=fb_state)
     FB = Image.open('images/facebook-icon.png')
     FB = ImageTk.PhotoImage(FB)
 
