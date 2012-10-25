@@ -1,5 +1,5 @@
 from Tkinter import *
-import Image,ImageTk
+import Image, ImageTk
 
 choices=list()
 global root
@@ -37,7 +37,7 @@ def choose(app):
     global root
     global choices
     del choices[:]
-    print app
+    #print app
     fb_state='normal'
     tr_state='normal'
     gm_state='normal'
@@ -90,3 +90,6 @@ def choose(app):
     root.mainloop()
 
     return choices
+
+#def check(filetype, filepath):
+    

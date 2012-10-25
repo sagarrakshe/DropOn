@@ -7,14 +7,19 @@ def update(social, filetype, filename):
 	File.close()
 
 	if 'facebook' in social:
+		print 'facebook'
+		'''
 		fbconsole.AUTH_SCOPE=['publish_stream','publish_checkins']
         fbconsole.authenticate()
         if filetype=='image':
         	fbconsole.post('/me/photos', {'source':open(filename)})
         else:
         	fbconsole.post('/me/feed',{'message':content})
+        	'''
 	
 	if 'twitter' in social:
+		print 'Twitter'
+		'''
 		CONSUMER_KEY = 'yZhLq6yet3ff2GpfYJpzYw'
 		CONSUMER_SECRET = 'oGdqctzEbTJZSv6jwLp0pxEsXuhKZobmU0MKEGyKA'
 		ACCESS_KEY = '229359792-tCaMBJtr6arMk83En9oNSwOkm0gavxBopW2s1U5W'
@@ -25,6 +30,7 @@ def update(social, filetype, filename):
 		api = tweepy.API(auth)
 		tweet = content
 		api.update_status(content)
+		'''
 
 	if 'gmail' in social:
 		print 'Now connecting to google accounts'
