@@ -44,7 +44,7 @@ class EventHandler(pyinotify.ProcessEvent):
         else:
             #notify(event.pathname.split("/").pop())
             filetype=distinguish(event.pathname)
-            social.update(choose.choose(filetype), filetype, event.pathname)
+            social.update(choose.(filetype), filetype, event.pathname)
             os.remove(event.pathname)
         #print internet_on()
         
