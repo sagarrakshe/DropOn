@@ -11,8 +11,9 @@ import os
 wm = pyinotify.WatchManager() # Watch Manager
 mask = pyinotify.IN_DELETE | pyinotify.IN_CREATE # watched events
 
-Images=['.jpg','.gif','.jpeg','.png']
-Videos=['.flv','.mp4','.mkv']
+Images = ['.jpg','.gif','.jpeg','.png']
+Videos = ['.flv','.mp4','.mkv']
+Email = ['gmail','yahoo','rediff']
 choices=list()
 
 def distinguish(filePath):
@@ -21,8 +22,6 @@ def distinguish(filePath):
     filePath=filePath.split('/').pop()
     #print filePath
     if content.find('@')>=0 and content.find('.com')>=0:
-        #print 'This is an email id'
-        #print 'email will be sent to this id via ur gmail'
         return "emailid"
     elif content.find('youtube')>=0:
         return "youtube"
@@ -44,7 +43,7 @@ class EventHandler(pyinotify.ProcessEvent):
         else:
             #notify(event.pathname.split("/").pop())
             filetype=distinguish(event.pathname)
-            social.update(choose.(filetype), filetype, event.pathname)
+            social.update(choose.choose(filetype), filetype, event.pathname)
             os.remove(event.pathname)
         #print internet_on()
         
