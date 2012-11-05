@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+"""
+Choose The Options Facebook, Gmail, Twitter,Youtube
+"""
 from Tkinter import *
 import Image, ImageTk
 
@@ -31,7 +35,7 @@ def gmail():
 
 def youtube():
     print "Youtube"
-    return 
+    return
 
 def choose(app):
     global root
@@ -42,7 +46,7 @@ def choose(app):
     tr_state='normal'
     gm_state='normal'
     yt_state='normal'
-    
+
     root=Tk()
     root.overrideredirect(1)
     width=root.winfo_screenwidth()
@@ -65,22 +69,22 @@ def choose(app):
     yt_check = Checkbutton(root,command=(lambda: append("youtube")), state=yt_state)
     YT = Image.open('images/youtube-icon.png')
     YT = ImageTk.PhotoImage(YT)
-    
+
     fb_btn=Button(root, image=FB, width=30, height=30, relief=FLAT, command=facebook)
     fb_btn.grid(row=1,column=1, padx=20, pady=20)
     fb_check.grid(row=1,column=2, pady=20, padx=0)
     Label(root, text="POST").grid(row=1, column=3, padx=10)
-    
+
     tr_btn=Button(root, image=TR, width=30, height=30, relief=FLAT, command=twitter)
     tr_btn.grid(row=2,column=1, padx=20, pady=20)
     tr_check.grid(row=2,column=2, pady=20)
     Label(root, text="TWEET").grid(row=2, column=3, padx=10)
-    
+
     gm_btn=Button(root, image=GM, width=30, height=30, relief=FLAT, command=gmail)
     gm_btn.grid(row=3,column=1, padx=20, pady=20)
     gm_check.grid(row=3,column=2, pady=20)
     Label(root, text="MAIL").grid(row=3, column=3, padx=10)
-    
+
     yt_btn=Button(root, image=YT, width=30, height=30, relief=FLAT, command=youtube)
     yt_btn.grid(row=4,column=1, padx=20, pady=20)
     yt_check.grid(row=4,column=2, pady=20)
@@ -92,4 +96,3 @@ def choose(app):
     return choices
 
 #def check(filetype, filepath):
-    
