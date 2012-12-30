@@ -27,5 +27,6 @@ Supported functions:-
 
 Know more about:-
 ---------------------------------------------------------------------------------
- ![Screenshot](https://github.com/tripples/DropOn/blob/master/screenshot/poster.png)
+ ![Screenshot](https://github.com/tripples/DropOn/blob/master/screeshot/poster.png)
+
 
